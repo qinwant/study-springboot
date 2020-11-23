@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingwan.boot.dao.UserMapper">
+    <resultMap id="userMap" type="com.kingwan.boot.pojo.User">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="login_time" property="loginTime"></result>
+        <result column="last_login_time" property="lastLoginTime"></result>
+    </resultMap>
+
+<!--    添加用户-->
+    <insert id="saveUser" parameterType="com.kingwan.boot.pojo.User">
+        insert into user(username,password,create_time,login_time,last_login_time)
+        values(#{username},#{password},#{createTime},#{loginTime},#{lastLoginTime})
+    </insert>
+
+<!--    根据id用户-->
+    <select id="queryUserById" parameterType="Integer" resultMap="userMap">
+        select id,username,password,create_time,login_time,last_login_time
+        from user where id = #{id}
+    </select>
+
+<!--    根据用户名查找用户-->
+    <select id="queryUserByName" parameterType="String" resultMap="userMap">
+        select id,username,password,create_time,login_time,last_login_time
+        from user where username = #{name}
+    </select>
+
+<!--    更新用户信息-->
+    <update id="updateUser" parameterType="com.kingwan.boot.pojo.User">
+        update user set username = #{username},password = #{password}
+        where id = #{id}
+    </update>
+
+<!--    删除用户信息-->
+    <delete id="deleteUser" parameterType="Integer">
+        delete from user where id = #{id}
+    </delete>
+
+</mapper>

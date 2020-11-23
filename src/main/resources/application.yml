@@ -1,0 +1,8 @@
+# \u914D\u7F6Eyml\u73AF\u5883
+spring:
+  profiles:
+    active: dev
+  thymeleaf:
+    cache: false  # \u5173\u95ED\u7F13\u5B58
+
+
