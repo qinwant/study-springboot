@@ -2,6 +2,8 @@ package com.kingwan.boot.service;
 
 import com.kingwan.boot.pojo.User;
 
+import java.util.List;
+
 /**
  * Created by kingwan on 2020/11/23.
  * 说明：
@@ -12,4 +14,6 @@ public interface UserService {
     int deleteUser(int id);
     User queryUserById(int id);
     User queryUserByName(String name);
+
+    List<User> queryAll();
 }
