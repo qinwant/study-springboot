@@ -39,6 +39,9 @@ mybatis:
 # pagehelper配置
 pagehelper:
   helper-dialect: mysql
+  params: count=countSql
+  reasonable: true
+  support-methods-arguments: true
 # 显示执行sql
 logging:
   level:
