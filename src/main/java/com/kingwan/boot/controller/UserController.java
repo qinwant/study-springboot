@@ -47,6 +47,7 @@ public class UserController {
     @GetMapping("/query/{id}")
     @ApiOperation(value = "根据id查找用户",notes = "必填")
     @Cacheable(value = "user",key = "#id")
+    @Transactional(propagation = Propagation.REQUIRED)
     public ResponseDO queryUserById(@PathVariable Integer id){
         User user = userService.queryUserById(id);
         if(user != null){
@@ -111,4 +112,5 @@ public class UserController {
         }
         return new ResponseDO(UserResult.USER_EMPTY,"delete failed");
     }
+
 }
