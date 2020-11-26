@@ -38,7 +38,7 @@
 
 <!--    更新用户信息-->
     <update id="updateUser" parameterType="com.kingwan.boot.pojo.User">
-        update user set username = #{username},password = #{password}
+        update user set username = #{username} , password = #{password}
         where id = #{id}
     </update>
 

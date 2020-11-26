@@ -2,7 +2,6 @@ server:
   port: 8081
 
 spring:
-
   # 数据源配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -26,6 +25,18 @@ spring:
       minEvictableIdleTimeMillis: 300000
       # 配置一个连接在池中最大生存的时间，单位是毫秒
       maxEvictableIdleTimeMillis: 900000
+# 热部署配置
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java #设置重启的目录，添加目录的文件需要restart
+      # 解决项目重新编译后接口报404的问题
+      poll-interval: 3000
+      quiet-period: 1000
+## Ehcache缓存配置
+  cache:
+    ehcache:
+      config: ehcache.xml
 # mybaits配置
 mybatis:
 #  mapper的位置
@@ -46,3 +57,4 @@ pagehelper:
 logging:
   level:
     com.kingwan.boot: debug
+

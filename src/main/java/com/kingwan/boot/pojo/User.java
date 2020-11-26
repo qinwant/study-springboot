@@ -2,6 +2,7 @@ package com.kingwan.boot.pojo;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
  * 说明：用户表
  */
 @Data
-public class User {
+public class User implements Serializable {
     private int id;
     private String username;
     private String password;

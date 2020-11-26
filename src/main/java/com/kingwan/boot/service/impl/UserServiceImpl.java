@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     public int updateUser(User user) {
         //更新用户前判断用户名是否已存在
         User u = userMapper.queryUserByName(user.getUsername());
-        if(u == null){
+        if(u == null || u.getId()==user.getId()){
             return userMapper.updateUser(user);
         }
         return 0;
