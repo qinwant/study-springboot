@@ -1,12 +1,15 @@
 ## Git的使用
 
-> 最新更新：2020/11/26  模拟push冲突、总结反馈
+> 最新更新：2020/11/27  整理归纳
 >
 > 更新记录：
 >
-> - 2020/11/25 基本开发规范，命令总结
+> - 2020/11/26  模拟push冲突、总结反馈
 >
+> - 2020/11/25 基本开发规范，命令总结
 > - 2020/11/24 git基本使用、关联远程分支
+>
+> 未完待续。。。
 
 [toc]- [Git的使用](#git的使用)
   - [任务二过程记录](#任务二过程记录)
@@ -23,13 +26,13 @@
     - [2.1 Windows下搭建git](#21-windows下搭建git)
     - [2.2 Linux下搭建git](#22-linux下搭建git)
   - [3. 创建本地仓库](#3-创建本地仓库)
-      - [成功创建的情况](#成功创建的情况)
+      - [3.1 成功创建的情况](#31-成功创建的情况)
   - [4. 创建远程仓库](#4-创建远程仓库)
     - [4.1 创建`github`远程仓库](#41-创建github远程仓库)
       - [New repository](#new-repository)
       - [说明](#说明)
     - [4.2 创建码云远程仓库](#42-创建码云远程仓库)
-      - [关联方式](#关联方式)
+      - [5.1 关联方式](#51-关联方式)
   - [6. 常见命令总结](#6-常见命令总结)
     - [6.1 创建git仓库](#61-创建git仓库)
     - [6.2 本地操作](#62-本地操作)
@@ -39,11 +42,18 @@
     - [6.6 merge和rebase](#66-merge和rebase)
     - [6.7 撤销操作](#67-撤销操作)
   - [7. 如何协同开发](#7-如何协同开发)
+    - [7.1 创建开发分支](#71-创建开发分支)
+    - [7.2 fork项目到个人仓库/直接在dev开发](#72-fork项目到个人仓库直接在dev开发)
+    - [7.3 clone项目到本地](#73-clone项目到本地)
+    - [7.4 和团队项目保持同步](#74-和团队项目保持同步)
+    - [7.5 push修改到自己的本地版本](#75-push修改到自己的本地版本)
+    - [7.6 请求合并](#76-请求合并)
+    - [7.7 审核合并请求](#77-审核合并请求)
   - [8. 常见问题解决](#8-常见问题解决)
-      - [8.1 文件提交](#81-文件提交)
+    - [8.1 文件提交](#81-文件提交)
   - [9. 实际开发规范](#9-实际开发规范)
     - [9.1 分支命名](#91-分支命名)
-      - [mas ter分支](#mas-ter分支)
+      - [master分支](#master分支)
       - [develop分支](#develop分支)
       - [feature分支](#feature分支)
       - [release分支](#release分支)
@@ -70,7 +80,7 @@
 
   ![image-20201126223435175](https://cdn.jsdelivr.net/gh/qinwant/Figurebed/img/20201126223436.png)
 
-- 查看本地项目分支(只显示master)
+- 查看本地项目分支(只显示`master`)
 
   ```yml
   git branch
@@ -86,7 +96,7 @@
 
   ![image-20201126223621377](https://cdn.jsdelivr.net/gh/qinwant/Figurebed/img/20201126223622.png)
 
-- 关联远程分支dev
+- 关联远程分支`dev`
 
   ```yml
   git checkout -b dev origin/dev
@@ -94,7 +104,7 @@
 
   ![image-20201126223736444](https://cdn.jsdelivr.net/gh/qinwant/Figurebed/img/20201126223738.png)
 
-- 在dev分支下修改内容并提交到本地仓库
+- 在`dev`分支下修改内容并提交到本地仓库
 
   ![image-20201126223954370](https://cdn.jsdelivr.net/gh/qinwant/Figurebed/img/20201126223956.png)
 
@@ -108,13 +118,13 @@
 
 ##### 1.2 模拟冲突情况
 
-- 其他协作者修改`test.md`内容并push
+- 其他协作者修改`test.md`内容并`push`
 
 - 本地同时再次修改`test.md`，并提交
 
   ![image-20201126224342568](https://cdn.jsdelivr.net/gh/qinwant/Figurebed/img/20201126224344.png)
 
-- 提交失败。解决：拉取最新版本，解决冲突
+- 提交失败。**解决：拉取最新版本，解决冲突**
 
   ```yml
   git pull
@@ -151,8 +161,6 @@
 - 忘记了命令不怕，只有常用才能熟悉，遇见问题先分析产生的场景，再来思考解决方案。
 
 - 要有意识记录问题，方便下次遇见及时定位及时解决
-
-
 
 ### 1. Git介绍
 
@@ -195,7 +203,7 @@
   git init
   ```
 
-##### 成功创建的情况
+##### 3.1 成功创建的情况
 
 - 文件夹下出现`.git`的隐藏文件
 
@@ -212,7 +220,7 @@
 
 ##### New repository
 
-登陆自己的github，右上角+号，New repository，填写相关信息
+登陆自己的github，右上角+号，`New repository`，填写相关信息
 
 ![image-20201124215540460](https://cdn.jsdelivr.net/gh/qinwant/Figurebed/img/20201124215542.png)
 
@@ -228,7 +236,7 @@
 
 ###5. 关联远程仓库
 
-##### 关联方式
+##### 5.1 关联方式
 
 - SSH
 
@@ -247,7 +255,7 @@
   git push -u origin master
   ```
 
-> 注意：
+> 注意：使用`HTTPS`的方式可能会出现每次push都需要验证用户名密码，解决详见8.常见问题解决
 
 ### 6. 常见命令总结
 
@@ -369,15 +377,59 @@
 
 #### 6.5 更新与发布
 
+```yml
+git remote -v # 查看所有的远程版本
+git remote show <remote> # 显示远程仓库的信息
+git remote add <shortname> <url> # 向远程添加一个仓库
+git fetch <remote> # 从远程下载所有更改，不集成到HEAD中
+git pull <remote> <branch> # 拉取远程的所有更改，并集成到HEAD中
+git push <remote> <branch> # 向远程推送
+git branch -dr <remote/branch> # 删除分支
+git push --tags # 发布标签
+```
+
 #### 6.6 merge和rebase
+
+```yml
+git merge <branch> # 合并分支
+git rebase <branch> 
+git rebase --abort # 终止rebase
+git rebase --continue # 解决冲突后继续rebase
+git mergetool # 使用配置的合并工具解决冲突
+git add <resolved-file> # 手动解决冲突
+git rm <resolved-file>
+```
 
 #### 6.7 撤销操作
 
+```yml
+git reset --hard HEAD # 丢弃所有更改
+git checkout HEAD <file> # 放弃指定文件中的修改
+git revert <commit> # 还原提交
+git reset --hard <commit> # 回到上次提交
+git reset <commit> # 将所有更改保留为非暂存更改
+git reset --keep <commit> # 保留未提交的本地更改
+```
+
 ### 7. 如何协同开发
+
+#### 7.1 创建开发分支
+
+#### 7.2 fork项目到个人仓库/直接在dev开发
+
+#### 7.3 clone项目到本地
+
+#### 7.4 和团队项目保持同步
+
+#### 7.5 push修改到自己的本地版本
+
+#### 7.6 请求合并
+
+#### 7.7 审核合并请求 
 
 ### 8. 常见问题解决
 
-##### 8.1 文件提交
+#### 8.1 文件提交
 
 - 如何提交指定文件
 
@@ -386,37 +438,66 @@
   git commit a.java -m "修改了a.java"
   ```
 
-- 
+- 切换分支的问题
+
+  ```yml
+  error: Your local changes to the following files would be overwritten by checkout
+  # 使用git checkout <branch>时报错，原因在于当前分支存在未跟踪的文件，导致切换失败
+  ```
+
+  > 解决：
+  >
+  > 方案一：（未跟踪的文件内容比较重要）
+  >
+  > 保存修改
+  >
+  > > git add .
+  > >
+  > > git stash/git commit -m "或者直接提交"
+  > >
+  > > git stash pop(取出的时候使用)
+  >
+  > 方案二：
+  >
+  > 丢弃修改
+  >
+  > > git clean -n  清除文件预览
+  > >
+  > > git clean -f   强制清除文件
+  >
+  > 强制切换分支
+  >
+  > > git checkout -f < branch >
 
 ### 9. 实际开发规范
 
 #### 9.1 分支命名
 
-##### mas ter分支
+##### master分支
 
-- 主分支，用于部署生成环境，确保master分支稳定性
+- 主分支，用于部署生成环境，确保`master`分支稳定性
 - 一般由`develop`分支和`hotfix`分支合并
 - 任何时间都不能直接修改代码
 
 ##### develop分支
 
 - 开发分支，始终保持最新完成及bug修复后的代码
-- 开发新功能时，feature分支一般都是基于develop分支创建
+- 开发新功能时，`feature`分支一般都是基于`develop`分支创建
 
 ##### feature分支
 
-- 分支命名：feature/模块，例如`feature/user_module`
+- 分支命名：`feature/模块`，例如`feature/user_module`
 
 ##### release分支
 
 - 预上线分支，一般在发布提测阶段
 
-> 当feature分支开发完成，首先会合并到develop分支，进入提测阶段会创建release分支。测试阶段存在bug时，直接在release分支修复并提交，测试完成之后，合并release分支到master和develop分支，此时master为最新代码，用作上线。
+> 当`feature`分支开发完成，首先会合并到`develop`分支，进入提测阶段会创建`release`分支。测试阶段存在bug时，直接在`release`分支修复并提交，测试完成之后，合并`release`分支到`master`和`develop`分支，此时`master`为最新代码，用作上线。
 
 ##### hotfix分支
 
 - 分支命名：hotfix/开头的为修复分支
-- 线上出现紧急bug时，以master分支为基线，创建hotfix分支，修复完成后，合并到master和develop分支
+- 线上出现紧急bug时，以master分支为基线，创建`hotfix`分支，修复完成后，合并到master和develop分支
 
 ####  9.2 常见任务
 
